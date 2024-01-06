@@ -30,21 +30,21 @@ spec:
           claimName: api-jenkins
 
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: training-jenkins-ingress
-  namespace: jenkins
-spec:
-  ingressClassName: cilium
-  rules:
-  - host: "jenkins.nam.com"
-    http:
-      paths:
-      - backend:
-          service:
-            name: jenkins
-            port:
-              number: 8080
-        path: /
-        pathType: Prefix
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: training-jenkins-ingress
+#   namespace: jenkins
+# spec:
+#   ingressClassName: cilium
+#   rules:
+#   - host: "jenkins.nam.com"
+#     http:
+#       paths:
+#       - backend:
+#           service:
+#             name: jenkins
+#             port:
+#               number: 8080
+#         path: /
+#         pathType: Prefix
