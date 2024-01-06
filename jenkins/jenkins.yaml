@@ -22,10 +22,11 @@ spec:
           - name: jnlp-port
             containerPort: 50000
         volumeMounts:
-          - name: jenkins
-            mountPath: /var/jenkins_home
+        - mountPath: /var
+          name: jenkins-volume
+          subPath: jenkins_home
       volumes:
-      - name: jenkins
+      - name: jenkins-volume
         persistentVolumeClaim:
           claimName: api-jenkins
 
