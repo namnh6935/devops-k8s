@@ -1,34 +1,50 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-python-service
-spec:
-  selector:
-    app: hello-python
-  ports:
-  - protocol: "TCP"
-    port: 6000
-    targetPort: 5000
-  type: LoadBalancer
-
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: fastapi-app
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
-     app: hello-python
+      app: fastapi-app
   template:
     metadata:
       labels:
-        app: hello-python
+        app: fastapi-app
     spec:
       containers:
-      - name: hello-python
-        image: namhn89/hello-python:dev
+      - name: fastapi-app
+        image: fnamhn89/fastapi:latest
+        env:
+          - name: DB_HOST
+            value: postgres
+          - name: DB_DATABASE
+            value: your_database_name
+          - name: DB_USERNAME
+            value: your_username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgres-password
+          - name: DATABASE_URL
+            value: postgresql://${DB_DATABASE}:${DB_PASSWORD}@postgres:5432/${DB_DATABASE}
         ports:
-        - containerPort: 5000
+        - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-app-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane
+      # will allocate a port from a range (default: 30000-32767)
+      nodePort: 31222
+  selector:
+    app: fastapi-app
