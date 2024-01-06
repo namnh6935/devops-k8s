@@ -23,7 +23,7 @@ spec:
             containerPort: 50000
         volumeMounts:
           - name: jenkins-vol
-            mountPath: /var/jenkins_home
+            mountPath: /var/jenkins_vol
       volumes:
       - name: jenkins-vol
         persistentVolumeClaim:
