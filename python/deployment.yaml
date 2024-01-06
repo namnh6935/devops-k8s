@@ -50,3 +50,22 @@ spec:
       nodePort: 31222
   selector:
     app: fastapi-app
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-python-ingress
+  namespace: python-demo
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: "python.nam.com"
+    http:
+      paths:
+      - backend:
+          service:
+            name: fastapi-app-service
+            port:
+              number: 8000
+        path: /
+        pathType: Prefix

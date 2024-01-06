@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
+  namespace: jenkins
 spec:
   replicas: 1
   selector:
@@ -24,5 +25,26 @@ spec:
           - name: jenkins-vol
             mountPath: /var/jenkins_vol
       volumes:
-        - name: jenkins-vol
-          emptyDir: {}
+      - name: jenkins-vol
+        persistentVolumeClaim:
+          claimName: api-jenkins
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-jenkins-ingress
+  namespace: jenkins
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: "jenkins.nam.com"
+    http:
+      paths:
+      - backend:
+          service:
+            name: jenkins
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
