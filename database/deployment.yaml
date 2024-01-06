@@ -1,7 +1,8 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: postgres-statefulset
+  namespace: python-demo
 spec:
   serviceName: "postgres"
   replicas: 1
@@ -29,14 +30,9 @@ spec:
         ports:
         - containerPort: 5432
         volumeMounts:
-        - name: postgres-storage
+        - name: postgres
           mountPath: /var/lib/postgresql/data
-  volumeClaimTemplates:
-  - metadata:
-      name: postgres-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 5Gi
-      storageClassName: local-storage
+      volumes:
+      - name: postgres
+        persistentVolumeClaim:
+          claimName: api-postgres
