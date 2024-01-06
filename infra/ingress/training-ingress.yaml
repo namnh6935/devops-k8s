@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-ingress
+  namespace: api
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: "dotnet.devops4all.co"
+    http:
+      paths:
+      - backend:
+          service:
+            name: dotnet-app
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: "nodejs.devops4all.co"
+    http:
+      paths:
+      - backend:
+          service:
+            name: nodejs-app
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
