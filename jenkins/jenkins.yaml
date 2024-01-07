@@ -16,6 +16,9 @@ spec:
       containers:
       - name: jenkins
         image: jenkins/jenkins:lts
+        securityContext:
+          runAsUser: 1000  # replace with the UID of the jenkins user
+          runAsGroup: 1000 # replace with the GID of the jenkins group
         ports:
           - name: http-port
             containerPort: 8080
