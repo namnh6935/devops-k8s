@@ -10,5 +10,6 @@ spec:
     storage: 2Gi
   accessModes:
     - ReadWriteOnce
+  storageClassName: local-storage
   hostPath:
-    path: "/home/ubuntu/jenkins-data"
+    path: /data/jenkins_home/
