@@ -13,12 +13,12 @@ spec:
       labels:
         app: jenkins
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 0 # replace with the GID of the jenkins group
       containers:
       - name: jenkins
         image: jenkins/jenkins:lts
-        securityContext:
-          fsGroup: 1000
-          runAsUser: 0 # replace with the GID of the jenkins group
         ports:
           - name: http-port
             containerPort: 8080
