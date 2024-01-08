@@ -18,6 +18,11 @@ def read_root():
     return {"result": "Hello World"}
 
 
+@app.get("/hello")
+def hello_nam():
+    return {"result": "Hello Nam"}
+
+
 # Dependency to get the database session
 def get_db():
     db = SessionLocal()
