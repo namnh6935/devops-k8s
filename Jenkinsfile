@@ -20,7 +20,7 @@ pipeline {
       }
 
       steps {
-        sh "cd python"
+        sh "cd python/app-python/"
         sh "sudo docker build -t fastapi-$ENV:latest ."
         sh "sudo docker images"
         sh "sudo echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB --password-stdin"
