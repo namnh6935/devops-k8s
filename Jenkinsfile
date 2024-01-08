@@ -5,6 +5,7 @@ pipeline {
     BUILD_NODE = "worker-node-3"
     MASTER_NODE = "deploy-server"
     DOCKER_HUB = "namhn89"
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
 
   stages {
