@@ -12,13 +12,13 @@ class ItemRequest(BaseModel):
 
 app = FastAPI()
 
-123
+
 @app.get("/")
 def read_root():
     return {"result": "Hello World"}
 
 
-@app.get("/hello")
+@app.get("/test")
 def hello_nam():
     return {"result": "Hello Nam"}
 
