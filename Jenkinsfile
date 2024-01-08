@@ -25,7 +25,7 @@ pipeline {
           // sh "cd python/app-python"
           sh "sudo docker build -t fastapi-$ENV:latest ."
           sh "sudo docker images"
-          sh "sudo echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKER_HUB --password-stdin"
+          sh "sudo echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKER_HUB --password-stdin"
           sh "sudo docker tag fastapi-$ENV:latest $DOCKER_HUB/fastapi:$TAG"
           sh "sudo docker rmi -f $DOCKER_HUB/fastapi:$TAG"
           sh "sudo docker rmi -f fastapi-$ENV:latest"
