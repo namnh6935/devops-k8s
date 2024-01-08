@@ -44,7 +44,7 @@ pipeline {
       steps {
         sh "sudo sed -i 's|namhn89/fastapi:{tag}|namhn89/fastapi:$TAG|' python/deployment.yaml"
         sh "sudo kubectl apply -f python/deployment.yaml"
-        sh "sh 'kubectl rollout status deployment/fastapi-app -n python-demo"
+        sh "kubectl rollout status deployment/fastapi-app -n python-demo"
       }
     }
   }
