@@ -22,7 +22,6 @@ pipeline {
 
       steps {
         dir('python/app-python') {
-          // sh "cd python/app-python"
           sh "sudo docker build -t fastapi-$ENV:latest ."
           sh "sudo docker images"
           sh "sudo echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKER_HUB --password-stdin"
@@ -42,6 +41,7 @@ pipeline {
         TAG = sh(returnStdout: true, script: "git rev-parse -short=10 HEAD | tail -n +2").trim()
       }
       steps {
+        sh "sudo sed -i 's|namhn89/fastapi:{tag}|namhn89/fastapi:$TAG|' python/deployment.yaml"
         sh "sudo kubectl apply -f python/deployment.yaml"
       }
     }
