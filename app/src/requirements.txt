@@ -1,0 +1,11 @@
+celery==4.4.7
+fastapi
+uvicorn
+redis
+nanoid
+requests
+pyyaml
+protobuf==3.20.1
+python3-logstash
+SQLAlchemy==1.4.45
+psycopg2-binary==2.9.2
