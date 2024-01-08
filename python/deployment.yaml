@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: fastapi-app
-        image: namhn89/fastapi:dev
+        image: namhn89/fastapi:{tag}
         env:
           - name: DB_HOST
             value: postgres
