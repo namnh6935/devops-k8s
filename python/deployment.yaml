@@ -4,7 +4,7 @@ metadata:
   name: fastapi-app
   namespace: python-demo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: fastapi-app
