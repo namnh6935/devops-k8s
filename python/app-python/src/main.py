@@ -23,6 +23,11 @@ def hello_nam():
     return {"result": "Hello Nam"}
 
 
+@app.get("/seta")
+def hello_nam():
+    return {"result": "Hello Seta"}
+
+
 # Dependency to get the database session
 def get_db():
     db = SessionLocal()
