@@ -9,7 +9,7 @@ spec:
   - host: wasp-renewed-awfully.ngrok-free.app
     http:
       paths:
-      - path: /python
+      - path: /python/*
         pathType: Prefix
         backend:
           service:
@@ -28,7 +28,7 @@ spec:
   - host: wasp-renewed-awfully.ngrok-free.app
     http:
       paths:
-      - path: /jenkins
+      - path: /jenkins/*
         pathType: Prefix
         backend:
           service:
