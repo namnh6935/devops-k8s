@@ -9,8 +9,8 @@ spec:
   - host: wasp-renewed-awfully.ngrok-free.app
     http:
       paths:
-      - path: /python/*
-        pathType: Prefix
+      - path: /python
+        pathType: Exact
         backend:
           service:
             name: fastapi-app-service
@@ -28,8 +28,8 @@ spec:
   - host: wasp-renewed-awfully.ngrok-free.app
     http:
       paths:
-      - path: /jenkins/*
-        pathType: Prefix
+      - path: /jenkins
+        pathType: Exact
         backend:
           service:
             name: jenkins
