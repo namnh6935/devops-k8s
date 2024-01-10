@@ -14,5 +14,24 @@ spec:
             name: fastapi-app-service
             port:
               number: 8000
-        path: /
+        path: /app
+        pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-jenkins-ingress
+  namespace: jenkins
+spec:
+  ingressClassName: ngrok
+  rules:
+  - host: wasp-renewed-awfully.ngrok-free.app
+    http:
+      paths:
+      - backend:
+          service:
+            name: jenkins
+            port:
+              number: 8080
+        path: /jenkins
         pathType: Prefix
