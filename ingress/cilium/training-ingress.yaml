@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-python-ingress
+  namespace: python-demo
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: "team1app.devops4all.co"
+    http:
+      paths:
+      - backend:
+          backend:
+          service:
+            name: fastapi-app-service
+            port:
+              number: 8000
+        path: /
+        pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: training-jenkins-ingress
+  namespace: jenkins
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: "team1jenkins.devops4all.co"
+    http:
+      paths:
+      - backend:
+          service:
+            name: jenkins
+            port:
+              number: 8000
+        path: /
+        pathType: Prefix
