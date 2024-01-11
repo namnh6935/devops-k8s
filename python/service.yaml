@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-app-service
+  namespace: python-demo
+spec:
+  ports:
+    - name: fastapi-app
+      port: 8000
+      targetPort: http
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane
+      # will allocate a port from a range (default: 30000-32767)
+  selector:
+    app: fastapi-app

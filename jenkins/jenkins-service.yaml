@@ -4,10 +4,10 @@ metadata:
   name: jenkins
   namespace: jenkins
 spec:
-  type: LoadBalancer
   ports:
-    - port: 8080
-      targetPort: 8080
+    - name: jenkins
+      port: 8080
+      targetPort: http
       # Optional field
       # By default and for convenience, the Kubernetes control plane
       # will allocate a port from a range (default: 30000-32767)
@@ -16,15 +16,15 @@ spec:
 
 ---
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: jenkins-jnlp
-  namespace: jenkins
-spec:
-  type: ClusterIP
-  ports:
-    - port: 50000
-      targetPort: 50000
-  selector:
-    app: jenkins
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jenkins-jnlp
+#   namespace: jenkins
+# spec:
+#   type: ClusterIP
+#   ports:
+#     - port: 50000
+#       targetPort: 50000
+#   selector:
+#     app: jenkins
