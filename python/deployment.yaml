@@ -4,7 +4,7 @@ metadata:
   name: fastapi-app
   namespace: python-demo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fastapi-app
@@ -40,14 +40,13 @@ metadata:
   name: fastapi-app-service
   namespace: python-demo
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 8000
       targetPort: 8000
       # Optional field
       # By default and for convenience, the Kubernetes control plane
       # will allocate a port from a range (default: 30000-32767)
-      nodePort: 31222
   selector:
     app: fastapi-app
 ---
