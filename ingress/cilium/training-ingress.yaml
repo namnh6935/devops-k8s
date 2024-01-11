@@ -10,7 +10,6 @@ spec:
     http:
       paths:
       - backend:
-          backend:
           service:
             name: fastapi-app-service
             port:
