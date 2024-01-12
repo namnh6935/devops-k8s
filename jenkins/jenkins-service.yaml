@@ -4,11 +4,10 @@ metadata:
   name: jenkins-service
   namespace: jenkins
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 30000
       # Optional field
       # By default and for convenience, the Kubernetes control plane
       # will allocate a port from a range (default: 30000-32767)
