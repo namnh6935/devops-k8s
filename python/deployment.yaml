@@ -32,7 +32,6 @@ spec:
             value: postgresql://${DB_DATABASE}:${DB_PASSWORD}@postgres:5432/${DB_DATABASE}
         ports:
         - containerPort: 8000
-
 ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
