@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: cilium
   rules:
-  - host: "python.devops4all.co"
+  - host: "team1-python.devops4all.co"
     http:
       paths:
       - backend:
@@ -25,7 +25,7 @@ metadata:
 spec:
   ingressClassName: cilium
   rules:
-  - host: "jenkins.devops4all.co"
+  - host: "team1-jenkins.devops4all.co"
     http:
       paths:
       - backend:
