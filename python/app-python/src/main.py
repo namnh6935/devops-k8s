@@ -23,6 +23,11 @@ def hello_nam():
     return {"result": "Hello Nam"}
 
 
+@app.get("/devops")
+def hello_nam():
+    return {"result": "Hello devops"}
+
+
 @app.get("/seta")
 def hello_nam():
     return {"result": "Hello Seta"}
